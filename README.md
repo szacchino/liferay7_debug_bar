@@ -16,7 +16,7 @@ The bar appears in the bottom of the page and has the following tabs:
 The Data Model page use a modified code of the <a href="https://liferay.dev/b/the-magic-template-variable-dumper-script-for-liferay-7" target="_blank">Magic Template Variable Dumper</a>.
 
 # Usage
-1. Save this template to Liferay (name it `DEBUGBAR`, for example)
+1. Save this template as a Liferay template (name it `DEBUGBAR`, for example);
 
 2. Include this file AT THE BEGINNING of your main template:
    ```ftl
@@ -27,15 +27,17 @@ The Data Model page use a modified code of the <a href="https://liferay.dev/b/th
    ```ftl
    ${logger("My log message", "info")}
    ```
-   
-5. At the END of the template, call the macro to render the debug bar:
+
+   By default, `info` is set by default, so you can also write:
+   ${logger("My log message")}
+6. At the END of the template, call the macro to render the debug bar:
    ```ftl
    <@liferay_util["body-bottom"]>
      <@renderDebugBar />
    </@>
    ```
 
-EXAMPLE:
+# EXAMPLE
 
 ```ftl
 <#include "debug-bar.ftl" />
