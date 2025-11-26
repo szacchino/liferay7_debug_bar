@@ -45,7 +45,7 @@ ${logger("User: " + user.fullName, "success")}
 -->
 
 <#-- ============================================================ -->
-<#-- INIZIALIZZAZIONE VARIABILI                                   -->
+<#-- INIT VARIABLES                                               -->
 <#-- ============================================================ -->
 
 <#if !debugLogs??>
@@ -53,7 +53,7 @@ ${logger("User: " + user.fullName, "success")}
 </#if>
 
 <#-- ============================================================ -->
-<#-- FUNZIONE PER AGGIUNGERE LOG                                  -->
+<#-- A function to add a user log message                         -->
 <#-- ============================================================ -->
 
 <#function logger message level="info">
@@ -68,8 +68,8 @@ ${logger("User: " + user.fullName, "success")}
 </#function>
 
 <#-- ============================================================ -->
-<#-- MACRO PER RENDERIZZARE LA DEBUG BAR                          -->
-<#-- Da chiamare alla fine del template: <@renderDebugBar />     -->
+<#-- A MACRO TO RENDER THE DEBUG BAR                              -->
+<#-- Da chiamare alla fine del template: <@renderDebugBar />      -->
 <#-- ============================================================ -->
 
 <#macro renderDebugBar>
@@ -88,7 +88,7 @@ ${logger("User: " + user.fullName, "success")}
     "contextPath": httpServletRequest.getContextPath()!"N/A"
 } />
 
-<#-- Recupera parametri della request -->
+<#-- Gets request parameters -->
 <#local requestParams = {} />
 <#if httpServletRequest.getParameterMap()??>
     <#local paramMap = httpServletRequest.getParameterMap() />
@@ -102,7 +102,7 @@ ${logger("User: " + user.fullName, "success")}
     </#list>
 </#if>
 
-<#-- Recupera headers della request -->
+<#-- Gets request headers -->
 <#local requestHeaders = {} />
 <#if httpServletRequest.getHeaderNames()??>
     <#local headerNames = httpServletRequest.getHeaderNames() />
@@ -111,7 +111,7 @@ ${logger("User: " + user.fullName, "success")}
     </#list>
 </#if>
 
-<#-- Recupera attributi di sessione -->
+<#-- Gets session attributes -->
 <#local sessionData = {} />
 <#if httpServletRequest.getSession(false)??>
     <#local session = httpServletRequest.getSession(false) />
@@ -126,7 +126,7 @@ ${logger("User: " + user.fullName, "success")}
     </#list>
 </#if>
 
-<#-- Recupera cookies -->
+<#-- Gets page cookies -->
 <#local cookiesData = {} />
 <#if httpServletRequest.getCookies()??>
     <#list httpServletRequest.getCookies() as cookie>
@@ -436,12 +436,12 @@ ${logger("User: " + user.fullName, "success")}
         <div id="liferay-logs-panel" class="debug-content-panel active">
             <#if debugLogs?size == 0>
                 <div class="debug-empty">
-                    Nessun log disponibile.<br>
-                    Usa <code>logger("messaggio", "livello")</code> per aggiungere log.<br>
-                    Livelli disponibili: info, success, warning, error
+                    There are no log messages.<br>
+                    Use <code>logger("message", "level")</code> to add a log message .<br>
+                    Available levels (default is "info"): info, success, warning, error
                 </div>
             <#else>
-                <label>Filtro:</label>&nbsp;<input type="text" class="searchInput" oninput="searchTable(this, 'liferay-logs-panel', 'debug-log-entry')"><br>
+                <label>Filter:</label>&nbsp;<input type="text" class="searchInput" oninput="searchTable(this, 'liferay-logs-panel', 'debug-log-entry')"><br>
                 <#list debugLogs as log>
                     <div class="debug-log-entry ${log.level}">
                         <span class="debug-log-timestamp">${log.timestamp}</span>
@@ -454,13 +454,13 @@ ${logger("User: " + user.fullName, "success")}
         
         <!-- Request Panel -->
         <div id="liferay-request-panel" class="debug-content-panel">
-            <label>Filtro:</label>&nbsp;<input type="text" class="searchInput" oninput="searchTable(this, 'liferay-request-panel', 'debug-tr')"><br>
-            <div class="debug-section-title">Informazioni Request</div>
+            <label>Filter:</label>&nbsp;<input type="text" class="searchInput" oninput="searchTable(this, 'liferay-request-panel', 'debug-tr')"><br>
+            <div class="debug-section-title">Request's Info</div>
             <table class="debug-table">
                 <thead>
                     <tr>
-                        <th>Chiave</th>
-                        <th>Valore</th>
+                        <th>Key</th>
+                        <th>Value</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -473,15 +473,15 @@ ${logger("User: " + user.fullName, "success")}
                 </tbody>
             </table>
             
-            <div class="debug-section-title">Parametri Request</div>
+            <div class="debug-section-title">Request's parameters</div>
             <#if requestParams?size == 0>
-                <div class="debug-empty">Nessun parametro nella request</div>
+                <div class="debug-empty">There are no parameter in request.</div>
             <#else>
                 <table class="debug-table">
                     <thead>
                         <tr>
-                            <th>Parametro</th>
-                            <th>Valore</th>
+                            <th>Parameter</th>
+                            <th>Value</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -495,12 +495,12 @@ ${logger("User: " + user.fullName, "success")}
                 </table>
             </#if>
             
-            <div class="debug-section-title">Headers Request</div>
+            <div class="debug-section-title">Request's Headers</div>
             <table class="debug-table">
                 <thead>
                     <tr>
                         <th>Header</th>
-                        <th>Valore</th>
+                        <th>Value</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -516,16 +516,16 @@ ${logger("User: " + user.fullName, "success")}
         
         <!-- Session Panel -->
         <div id="liferay-session-panel" class="debug-content-panel">
-            <div class="debug-section-title">Dati di Sessione</div>
+            <div class="debug-section-title">Session's Attributes</div>
             <#if sessionData?size == 0>
-                <div class="debug-empty">Nessun dato in sessione</div>
+                <div class="debug-empty">No data in session</div>
             <#else>
-                <label>Filtro:</label>&nbsp;<input type="text" class="searchInput" oninput="searchTable(this, 'liferay-session-panel', 'debug-tr')"><br>
+                <label>Filter:</label>&nbsp;<input type="text" class="searchInput" oninput="searchTable(this, 'liferay-session-panel', 'debug-tr')"><br>
                 <table class="debug-table">
                     <thead>
                         <tr>
-                            <th>Attributo</th>
-                            <th>Valore</th>
+                            <th>Attribute</th>
+                            <th>Value</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -544,14 +544,14 @@ ${logger("User: " + user.fullName, "success")}
         <div id="liferay-cookies-panel" class="debug-content-panel">
             <div class="debug-section-title">Cookies</div>
             <#if cookiesData?size == 0>
-                <div class="debug-empty">Nessun cookie disponibile</div>
+                <div class="debug-empty">No cookies available</div>
             <#else>
-                <label>Filtro:</label>&nbsp;<input type="text" class="searchInput" oninput="searchTable(this, 'liferay-cookies-panel', 'debug-tr')"><br>
+                <label>Filter:</label>&nbsp;<input type="text" class="searchInput" oninput="searchTable(this, 'liferay-cookies-panel', 'debug-tr')"><br>
                 <table class="debug-table">
                     <thead>
                         <tr>
-                            <th>Nome</th>
-                            <th>Valore</th>
+                            <th>Name</th>
+                            <th>Value</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -570,14 +570,14 @@ ${logger("User: " + user.fullName, "success")}
         <div id="liferay-datamodel-panel" class="debug-content-panel">
             <div class="debug-section-title">Data Model</div>
             <#if .data_model?keys?size == 0>
-                <div class="debug-empty">Nessuna variabile Liferay disponibile</div>
+                <div class="debug-empty">No keys in .data_model</div>
             <#else>
-                <label>Filtro:</label>&nbsp;<input type="text" class="searchInput" oninput="searchTable(this, 'liferay-datamodel-panel', 'debug-tr')"><br>
+                <label>Filter:</label>&nbsp;<input type="text" class="searchInput" oninput="searchTable(this, 'liferay-datamodel-panel', 'debug-tr')"><br>
                 <table class="debug-table">
                     <thead>
                         <tr>
-                            <th>Nome</th>
-                            <th>Valore</th>
+                            <th>Name</th>
+                            <th>Value</th>
                         </tr>
                     </thead>
                     <tbody>
