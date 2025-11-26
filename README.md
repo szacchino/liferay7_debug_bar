@@ -39,7 +39,7 @@ The Data Model page use a modified code of the <a href="https://liferay.dev/b/th
    </@>
    ```
 
-# EXAMPLE
+# Example
 
 ```ftl
 <#include "debug-bar.ftl" />
