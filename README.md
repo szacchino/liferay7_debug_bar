@@ -13,7 +13,7 @@ The bar appears in the bottom of the page and has the following tabs:
 - Cookies: page cookies
 - Data Model: keys and values of `.data_model` object;
 
-The Data Model page use a modified code of the (https://liferay.dev/b/the-magic-template-variable-dumper-script-for-liferay-7)[Magic Template Variable Dumper].
+The Data Model page use a modified code of the [https://liferay.dev/b/the-magic-template-variable-dumper-script-for-liferay-7](Magic Template Variable Dumper).
 
 # Usage
 1. Save this template to Liferay (name it `DEBUGBAR`, for example)
