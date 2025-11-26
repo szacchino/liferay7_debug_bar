@@ -1,7 +1,7 @@
-# Debug Bar for Liferay 7.0.x
+# 🦜 Debug Bar for Liferay 7.0.x
 A freemarker script that renders a Debug Bar (like <a href="https://github.com/php-debugbar/php-debugbar" target="_blank">PHP Debug Bar</a>) and helps you in writing freemarker templates' or ADTs' code, allowing you to display user's log message, request parameters, session attributes and a dump of `.data_model` object. Not tested on liferay versions above the 7.0.x. For security purposes the debug bar is visible only to Omniadmin.
 
-<img width="691" height="225" alt="image" src="https://github.com/user-attachments/assets/623fdae1-b1f8-4d9d-9675-efd6bbdaf813" />
+<img width="698" height="233" alt="image" src="https://github.com/user-attachments/assets/1bb0c17e-8710-4187-975b-482a832662be" />
 
 # Available tabs
 
