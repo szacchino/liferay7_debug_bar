@@ -1,5 +1,5 @@
 # Debug Bar for Liferay 7.0.x
-A freemarker script that helps you in writing freemarker templates or ADTs. Not tested on liferay versions above the 7.0.x. For security purposes the debug bar is visible only to Omniadmin.
+A freemarker script that helps you in writing freemarker templates or ADTs code. Not tested on liferay versions above the 7.0.x. For security purposes the debug bar is visible only to Omniadmin.
 
 <img width="691" height="225" alt="image" src="https://github.com/user-attachments/assets/623fdae1-b1f8-4d9d-9675-efd6bbdaf813" />
 
